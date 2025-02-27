@@ -76,5 +76,5 @@ jobs:
         with:
           app-name: 'ping-me-back'
           slot-name: 'Production'
-          package: "./build"
+          package: .
           

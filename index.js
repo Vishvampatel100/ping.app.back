@@ -11,7 +11,7 @@ import verifyTokenFirebase from './firebase/firbaseMiddleware.js';
 
 
 const app = express();
-const PORT =  process.env.PORT;
+const PORT =  process.env.PORT || 8080;
 
 const corsOptions = {
     origin: ['http://localhost:3000', 'https://yourdomain.com'], // Allow all origins (Change this for security)

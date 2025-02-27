@@ -20,7 +20,14 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-
+      env:
+          MONGO_URI: ${{ secrets.MONGO_URI}}
+          PORT: ${{ secrets.PORT}}
+          API_KEY: ${{ secrets.API_KEY}}
+      
+    - name: Create Firebase service account file
+      run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > ./ping-back001.json
+      
     - name: Build project
       run: npm run build --if-present
 

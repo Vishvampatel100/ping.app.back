@@ -22,9 +22,9 @@ jobs:
           
       - name: Set environment variables
         run: |
-          echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> .env
-          echo "PORT=${{ secrets.PORT }}" >> .env
-          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "MONGO_URI=${{ secrets.ENV_MONGO_URI }}" >> .env
+          echo "PORT=${{ secrets.ENV_PORT }}" >> .env
+          echo "API_KEY=${{ secrets.ENV_API_KEY }}" >> .env
 
       - name: Create firebaseadmin ServiceAccount.JSON file
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > ping-back001.json

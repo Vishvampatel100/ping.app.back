@@ -3,6 +3,9 @@ import admin from './firebaseAdmin.js';
 
 const verifyTokenFirebase = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
+    if (!authHeader) {
+        return res.status(401).json({ error: 'No token provided' });
+    }
     //get gearer token
     const token = authHeader.split(' ')[1];
     try {

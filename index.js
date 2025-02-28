@@ -8,13 +8,17 @@ import validateApiKey from './apiKey/authMiddleware.js';
 import cookieParser from 'cookie-parser';
 import firebaseRouter from './firebase/firbase.router.js';
 import verifyTokenFirebase from './firebase/firbaseMiddleware.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const app = express();
 const PORT =  process.env.PORT || 8080;
 
+// Allow all origins (Change this for security)
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://yourdomain.com'], // Allow all origins (Change this for security)
+    origin: [process.env.localURL, 
+            process.env.productionURL], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization', 'api-key'], // Allowed headers
 };

@@ -24,3 +24,6 @@ ping-back001.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.yml
+/.github

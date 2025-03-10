@@ -4,7 +4,7 @@
   "description": "backend",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,14 @@
   },
   "homepage": "https://github.com/Vishvampatel100/ping.backend#readme",
   "dependencies": {
+    "@azure/storage-blob": "^12.26.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "firebase-admin": "^13.1.0",
-    "mongoose": "^8.9.7"
+    "mongoose": "^8.9.7",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

@@ -3,6 +3,7 @@ import { connectDB } from './mongoConfig/db.js';
 import profileRouter from './routes/profile.route.js';
 import postRouter from './routes/post.route.js';
 import channelRouter from './routes/channel.route.js';
+import attachmentRouter from './routes/attachment.route.js';
 import cors from 'cors';
 import validateApiKey from './apiKey/authMiddleware.js';
 import cookieParser from 'cookie-parser';
@@ -38,6 +39,7 @@ app.use(validateApiKey);
 app.use ("/api/profiles", profileRouter);
 app.use ("/api/posts", postRouter);
 app.use ("/api/channels", channelRouter);
+app.use ("/api/attachments", attachmentRouter);
 
 
 app.get('/', (req, res) => {

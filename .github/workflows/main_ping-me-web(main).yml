@@ -27,6 +27,8 @@ jobs:
           echo "API_KEY=${{ secrets.ENV_API_KEY }}" >> .env
           echo "productionURL=${{ secrets.productionURL }}" >> .env
           echo "localURL=${{ secrets.localURL }}" >> .env
+          echo "AzureBlobConnectionString=${{ secrets.AzureBlobConnectionString }}" >> .env
+          echo "AzureBlobContainerName=${{ secrets.AzureBlobContainerName }}" >> .env
 
       - name: Create firebaseadmin ServiceAccount.JSON file
         run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > ping-back001.json

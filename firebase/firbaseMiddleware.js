@@ -1,45 +1,19 @@
+
 import admin from './firebaseAdmin.js';
 
 const verifyTokenFirebase = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
-
-    // Log the request headers
-    console.log('Request headers:', req.headers);
-
     if (!authHeader) {
-        console.log('No token provided');
+        console.log(`Token: ${token}, X-Original-URL: ${req.headers['x-original-url']}`);
         return res.status(401).json({ error: 'No token provided' });
     }
-
-    // Log that the token is present
-    console.log('Authorization header is present');
-
-    // Extract the Bearer token
+    //get gearer token
     const token = authHeader.split(' ')[1];
-
-    // Log the extracted token
-    console.log('Extracted token:', token);
-
     try {
-        // Verify the token using Firebase admin
         const decodedToken = await admin.auth().verifyIdToken(token);
-
-        // Log the decoded token
-        console.log('Decoded token:', decodedToken);
-
-        // Check if the token is expired
-        const currentTime = Math.floor(Date.now() / 1000);
-        if (decodedToken.exp < currentTime) {
-            console.log('Token is expired');
-            return res.status(401).json({ error: 'Token is expired' });
-        }
-
-        // Attach the decoded token to the request object
         req.user = decodedToken;
         next();
     } catch (error) {
-        // Log the error if token verification fails
-        console.log('Error verifying token:', error);
         res.status(401).json({ error: 'Invalid token' });
     }
 };

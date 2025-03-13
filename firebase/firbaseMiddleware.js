@@ -8,9 +8,6 @@ const verifyTokenFirebase = async (req, res, next) => {
     }
     //get gearer token
     const token = authHeader.split(' ')[1];
-    console.log("------------------------------")
-    console.log('Token:', token);
-    console.log(req.headers['x-original-url']);
     try {
         const decodedToken = await admin.auth().verifyIdToken(token);
         req.user = decodedToken;

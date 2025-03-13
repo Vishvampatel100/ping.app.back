@@ -58,6 +58,13 @@ attachmentRouter.post('/upload', upload.single('file'), async (req, res) => {
 // Download endpoint
 attachmentRouter.get('/download/:fileName', async (req, res) => {
   try {
+     // Log the verified user information
+    console.log('User information:', req.user);
+
+    const filename = req.params.fileName;
+    // Log the requested filename
+    console.log('Requested filename:', filename);
+
     const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
     const containerClient = blobServiceClient.getContainerClient(containerName);
 
